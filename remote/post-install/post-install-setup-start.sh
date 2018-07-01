@@ -1,8 +1,11 @@
-source ../config/user-config.sh
-source ../config/script-config.sh
+source /home/remote/config/user-config.sh
+source /home/remote/config/script-config.sh
+
+apt update && apt upgrade
 
 # Set hostname
-
+hostnamectl set-hostname $hostname
+echo "$ssh_ip $FQDN $hostname" >> /etc/hosts
 
 # Set the timezone
 ln -fs /usr/share/zoneinfo/$timezone /etc/localtime
@@ -11,7 +14,7 @@ dpkg-reconfigure -f noninteractive tzdata
 # Setup unattended upgrades #
 #############################
 
-sudo apt install unattended-upgrades
+sudo apt install unattended-upgrades -y
 
 # crude solution - should be improved
 echo "
@@ -46,9 +49,12 @@ APT::Periodic::Unattended-Upgrade "1";
 " > /etc/apt/apt.conf.d/20auto-upgrades
 
 # Add a limited User Account
+echo "\n\n\nATTENTION\nOn the blank line after \"Other []:\", type 'yes'.\n\n"
 adduser $limited_user
 adduser $limited_user sudo
-$limited_user ALL=NOPASSWD: ALL >> /etc/sudoers # consider removing
+
+# Some flavour
+echo $limited_user ALL=NOPASSWD: ALL >> /etc/sudoers # consider removing
 sudo update-alternatives --set editor /usr/bin/vim.basic
 
-exit # and setup ssh access only
+exit

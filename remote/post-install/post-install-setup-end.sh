@@ -1,5 +1,5 @@
-source ../config/user-config.sh
-source ../config/script-config.sh
+source /home/remote/config/user-config.sh
+source /home/remote/config/script-config.sh
 
 
 # disable root logins
@@ -13,3 +13,7 @@ sudo sed -i -e 's/#AddressFamily any/AddressFamily inet/g' /etc/ssh/sshd_config
 sudo systemctl restart sshd
 
 # TODO: Setup Fail2Ban & other measures: https://linode.com/docs/security/securing-your-server/
+
+
+echo "DONE";
+exit
