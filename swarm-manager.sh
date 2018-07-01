@@ -1,4 +1,4 @@
-source config.sh
+source ./config/user-config.sh
 
 # Download and install docker
 curl -sSL https://get.docker.com/ | sh

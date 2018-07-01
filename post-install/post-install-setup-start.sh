@@ -1,5 +1,5 @@
-source user-config.sh
-source script-config.sh
+source ../config/user-config.sh
+source ../config/script-config.sh
 
 # Set hostname
 
