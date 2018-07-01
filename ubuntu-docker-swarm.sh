@@ -10,9 +10,14 @@
 #   - configure the server as a docker swarm manager or node as required
 
 
-
+# Configure me here
 user="nkolatsis"
 swarm="" # options: ["manager", "node"]
-auth_type="ssh-keys" # options: {"ssh-keys", "password"}
+auth_type="ssh-keys" # options: ["ssh-keys", "password"]
 hostname=""
 ssh_ip=""
+
+
+# Swarm manager configuration
+
+# TODO: The script that does it all
